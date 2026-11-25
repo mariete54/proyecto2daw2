@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear cuenta · BarberFlow</title>
+  <meta name="description" content="Crea tu cuenta de BarberFlow y reserva tu primer corte en menos de un minuto.">
+  <meta name="theme-color" content="#090807">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Slab:wght@500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/mockData.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/pages/registro.js" defer></script>
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-hero">
+      <a href="index.html" class="brand auth-hero__brand">
+        <span class="brand__icon" aria-hidden="true">✂</span>
+        <span><span>BarberFlow</span><span class="brand__tag">Tu estilo, a tu ritmo</span></span>
+      </a>
+      <div class="auth-hero__content">
+        <p class="auth-hero__kicker">Barbería contemporánea</p>
+        <h1 class="auth-hero__title">Menos esperas.<br>Más <em>estilo.</em></h1>
+      </div>
+    </section>
+
+    <section class="auth-form">
+      <div class="auth-form__inner">
+        <nav class="form-tabs" aria-label="Modo de acceso">
+          <a href="login.html">Iniciar sesión</a>
+          <a href="registro.html" aria-current="page">Crear cuenta</a>
+        </nav>
+
+        <p class="eyebrow">Únete a BarberFlow</p>
+        <h2 class="form-title">Empieza a cuidarte mejor.</h2>
+
+        <form id="registroForm" class="auth-form__form" action="index.html" method="get">
+          <div class="form-field">
+            <label class="form-label" for="nombre">Nombre completo</label>
+            <span class="field-wrap">
+              <span aria-hidden="true">👤</span>
+              <input id="nombre" name="nombre" type="text" placeholder="Nombre y apellidos" autocomplete="name">
+            </span>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="email-r">Correo electrónico</label>
+            <span class="field-wrap">
+              <span aria-hidden="true">@</span>
+              <input id="email-r" name="email" type="email" placeholder="tu@email.com" autocomplete="email">
+            </span>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="nacimiento">Fecha de nacimiento</label>
+            <span class="field-wrap">
+              <span aria-hidden="true">📅</span>
+              <input id="nacimiento" name="nacimiento" type="date" autocomplete="bday">
+            </span>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="password-r">Contraseña</label>
+            <span class="field-wrap">
+              <span aria-hidden="true">••</span>
+              <input id="password-r" name="password" type="password" placeholder="8+ caracteres, con letras y números" autocomplete="new-password" aria-describedby="password-r-fuerza">
+              <button type="button" class="field-wrap__toggle" data-toggle-password="password-r" aria-pressed="false" aria-label="Mostrar contraseña">Ver</button>
+            </span>
+            <div class="strength" aria-hidden="true"><span class="strength__bar" id="fuerzaBarra"></span></div>
+            <p class="strength__label" id="password-r-fuerza">Seguridad: —</p>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="password-r2">Repite la contraseña</label>
+            <span class="field-wrap">
+              <span aria-hidden="true">••</span>
+              <input id="password-r2" name="password2" type="password" placeholder="Vuelve a escribirla" autocomplete="new-password">
+            </span>
+          </div>
+
+          <div class="form-field">
+            <label class="form-check" for="terminos">
+              <input id="terminos" name="terminos" type="checkbox">
+              <span>Acepto los términos de uso y la política de privacidad.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block auth-form__submit">
+            Crear mi cuenta <span aria-hidden="true">›</span>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi perfil · BarberFlow</title>
+  <meta name="description" content="Gestiona tus datos personales en BarberFlow.">
+  <meta name="theme-color" content="#090807">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Slab:wght@500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/mockData.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/pages/perfil.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a href="index.html" class="brand">
+        <span class="brand__icon" aria-hidden="true">✂</span>
+        <span><span>BarberFlow</span><span class="brand__tag">Tu estilo, a tu ritmo</span></span>
+      </a>
+      <nav class="sidebar__nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html">🏠 Inicio</a>
+        <a class="nav-link" href="crear.html">📅 Reservar cita</a>
+        <a class="nav-link" href="mis-citas.html">🕐 Mis citas</a>
+        <a class="nav-link" href="perfil.html" aria-current="page">👤 Mi perfil</a>
+        <a class="nav-link" href="planes.html">✦ Planes</a>
+      </nav>
+      <button type="button" class="sidebar__logout" data-action="logout">↩ Cerrar sesión</button>
+    </aside>
+
+    <header class="mobile-header">
+      <a href="index.html" class="brand"><span class="brand__icon" aria-hidden="true">✂</span><span>BarberFlow</span></a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+        <span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span>
+      </button>
+    </header>
+
+    <main class="app-main">
+      <div class="page-container">
+        <a class="back-link" href="index.html">‹ Inicio</a>
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Cuenta de cliente</p>
+            <h1 class="page-title">Mi <em class="font-serif text-gold">perfil.</em></h1>
+          </div>
+          <div class="profile-actions">
+            <button type="button" class="btn btn--outline" id="descartarBtn" hidden>Descartar</button>
+            <button type="button" class="btn btn--outline btn--outline-gold" id="editBtn">Editar datos</button>
+          </div>
+        </header>
+
+        <div class="profile-layout">
+          <aside class="profile-card">
+            <div class="profile-card__avatar" id="avatarInitials" aria-hidden="true">AH</div>
+            <h2 class="font-display profile-card__name" id="profileNameTitle">Alejandro Hernández</h2>
+            <p class="profile-card__meta" id="clienteDesde">Cliente desde marzo de 2024</p>
+            <p class="profile-card__meta">Plan actual: <a href="planes.html" class="text-gold" id="planPerfil">Flow</a></p>
+          </aside>
+
+          <form id="profileForm" class="profile-form" action="#" method="post">
+            <h2 class="font-display profile-form__title">Datos personales</h2>
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label" for="inputNombre">Nombre</label>
+                <span class="field-wrap"><input type="text" id="inputNombre" name="nombre" disabled class="profile-input" autocomplete="given-name"></span>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="inputApellidos">Apellidos</label>
+                <span class="field-wrap"><input type="text" id="inputApellidos" name="apellidos" disabled class="profile-input" autocomplete="family-name"></span>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="inputEmail">Correo electrónico</label>
+                <span class="field-wrap"><input type="email" id="inputEmail" name="email" disabled class="profile-input" autocomplete="email"></span>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="inputTelefono">Teléfono móvil</label>
+                <span class="field-wrap"><input type="tel" id="inputTelefono" name="telefono" disabled class="profile-input" autocomplete="tel"></span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegación inferior">
+      <a class="bottom-nav__link" href="index.html"><span aria-hidden="true">🏠</span> Inicio</a>
+      <a class="bottom-nav__link" href="crear.html"><span aria-hidden="true">📅</span> Reservar</a>
+      <a class="bottom-nav__link" href="mis-citas.html"><span aria-hidden="true">🕐</span> Citas</a>
+      <a class="bottom-nav__link" href="perfil.html" aria-current="page"><span aria-hidden="true">👤</span> Perfil</a>
+    </nav>
+  </div>
+</body>
+</html>

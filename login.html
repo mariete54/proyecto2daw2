@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso · BarberFlow</title>
+  <meta name="description" content="Inicia sesión en BarberFlow para reservar y gestionar tus citas en la barbería.">
+  <meta name="theme-color" content="#090807">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Slab:wght@500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/mockData.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/pages/login.js" defer></script>
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-hero">
+      <a href="index.html" class="brand auth-hero__brand">
+        <span class="brand__icon" aria-hidden="true">✂</span>
+        <span><span>BarberFlow</span><span class="brand__tag">Tu estilo, a tu ritmo</span></span>
+      </a>
+      <div class="auth-hero__content">
+        <p class="auth-hero__kicker">Barbería contemporánea</p>
+        <h1 class="auth-hero__title">Menos esperas.<br>Más <em>estilo.</em></h1>
+      </div>
+    </section>
+
+    <section class="auth-form">
+      <div class="auth-form__inner">
+        <nav class="form-tabs" aria-label="Modo de acceso">
+          <a href="login.html" aria-current="page">Iniciar sesión</a>
+          <a href="registro.html">Crear cuenta</a>
+        </nav>
+
+        <p class="eyebrow">Bienvenido de nuevo</p>
+        <h2 class="form-title">Tu próxima cita empieza aquí.</h2>
+
+        <form id="loginForm" class="auth-form__form" action="index.html" method="get">
+          <div class="form-field">
+            <label class="form-label" for="email">Correo electrónico</label>
+            <span class="field-wrap">
+              <span aria-hidden="true">@</span>
+              <input id="email" name="email" type="email" placeholder="tu@email.com" autocomplete="email">
+            </span>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="password">Contraseña</label>
+            <span class="field-wrap">
+              <span aria-hidden="true">••</span>
+              <input id="password" name="password" type="password" placeholder="Mínimo 6 caracteres" autocomplete="current-password">
+              <button type="button" class="field-wrap__toggle" data-toggle-password="password" aria-pressed="false" aria-label="Mostrar contraseña">Ver</button>
+            </span>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block auth-form__submit">
+            Entrar a BarberFlow <span aria-hidden="true">›</span>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

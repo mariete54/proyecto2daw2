@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi cita · BarberFlow</title>
+  <meta name="description" content="Detalle de tu reserva en BarberFlow: fecha, hora, servicio y barbero.">
+  <meta name="theme-color" content="#090807">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Slab:wght@500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/mockData.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/pages/detalle.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a href="index.html" class="brand">
+        <span class="brand__icon" aria-hidden="true">✂</span>
+        <span><span>BarberFlow</span><span class="brand__tag">Tu estilo, a tu ritmo</span></span>
+      </a>
+      <nav class="sidebar__nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html">🏠 Inicio</a>
+        <a class="nav-link" href="crear.html">📅 Reservar cita</a>
+        <a class="nav-link" href="mis-citas.html">🕐 Mis citas</a>
+        <a class="nav-link" href="perfil.html">👤 Mi perfil</a>
+        <a class="nav-link" href="planes.html">✦ Planes</a>
+      </nav>
+      <button type="button" class="sidebar__logout" data-action="logout">↩ Cerrar sesión</button>
+    </aside>
+
+    <header class="mobile-header">
+      <a href="index.html" class="brand"><span class="brand__icon" aria-hidden="true">✂</span><span>BarberFlow</span></a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+        <span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span>
+      </button>
+    </header>
+
+    <main class="app-main">
+      <div class="page-container">
+        <a class="back-link" href="mis-citas.html">‹ Mis citas</a>
+
+        <article class="detail-card" aria-labelledby="detalle-title">
+          <section class="detail-card__hero">
+            <div class="circle circle--a"></div><div class="circle circle--b"></div>
+            <span class="detail-card__check" id="detailIcon" aria-hidden="true">✓</span>
+            <p class="detail-card__eyebrow" id="detailEstado">Reserva confirmada</p>
+            <h1 id="detalle-title" class="detail-card__title"><span id="detailSaludo">Todo listo</span>,<br><span id="detailName">Alejandro</span>.</h1>
+            <p class="detail-card__text" id="detailTexto">Te esperamos. Hemos enviado todos los detalles a tu correo.</p>
+            <div class="detail-card__code">Código de reserva <strong id="detailCode">BF-0000</strong></div>
+          </section>
+
+          <section class="detail-card__body" aria-labelledby="detailTitleH2">
+            <p class="eyebrow">Detalle de la cita</p>
+            <h2 id="detailTitleH2" class="font-display detail-card__service">Cargando…</h2>
+
+            <div class="detail-rows">
+              <div class="detail-row">
+                <span class="detail-row__icon" aria-hidden="true">📅</span>
+                <div><p class="detail-row__label">Fecha</p><p class="detail-row__value" id="detailFecha">-</p></div>
+              </div>
+              <div class="detail-row">
+                <span class="detail-row__icon" aria-hidden="true">🕐</span>
+                <div><p class="detail-row__label">Hora</p><p class="detail-row__value" id="detailHora">-</p></div>
+              </div>
+              <div class="detail-row">
+                <span class="detail-row__icon" aria-hidden="true">✂</span>
+                <div><p class="detail-row__label">Servicio</p><p class="detail-row__value" id="detailServicio">-</p></div>
+              </div>
+              <div class="detail-row">
+                <span class="detail-row__icon" aria-hidden="true">👤</span>
+                <div><p class="detail-row__label">Barbero</p><p class="detail-row__value" id="detailBarbero">-</p></div>
+              </div>
+            </div>
+
+            <div class="detail-actions">
+              <a href="crear.html" class="btn btn--primary">Nueva cita</a>
+              <button type="button" id="cancelarBtn" class="btn btn--outline">Cancelar cita</button>
+            </div>
+          </section>
+        </article>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

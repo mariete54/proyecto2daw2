@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nueva reserva · BarberFlow</title>
+  <meta name="description" content="Reserva una cita en BarberFlow: elige servicio, barbero, día y hora.">
+  <meta name="theme-color" content="#090807">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Slab:wght@500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/mockData.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/validation.js" defer></script>
+  <script src="js/pages/crear.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a href="index.html" class="brand">
+        <span class="brand__icon" aria-hidden="true">✂</span>
+        <span><span>BarberFlow</span><span class="brand__tag">Tu estilo, a tu ritmo</span></span>
+      </a>
+      <nav class="sidebar__nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html">🏠 Inicio</a>
+        <a class="nav-link" href="crear.html" aria-current="page">📅 Reservar cita</a>
+        <a class="nav-link" href="mis-citas.html">🕐 Mis citas</a>
+        <a class="nav-link" href="perfil.html">👤 Mi perfil</a>
+        <a class="nav-link" href="planes.html">✦ Planes</a>
+      </nav>
+      <button type="button" class="sidebar__logout" data-action="logout">↩ Cerrar sesión</button>
+    </aside>
+
+    <header class="mobile-header">
+      <a href="index.html" class="brand"><span class="brand__icon" aria-hidden="true">✂</span><span>BarberFlow</span></a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+        <span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span>
+      </button>
+    </header>
+
+    <main class="app-main">
+      <div class="page-container">
+        <a class="back-link" href="index.html">‹ Volver</a>
+        <header class="page-intro">
+          <p class="eyebrow">Nueva reserva</p>
+          <h1 class="page-title">Hazte un hueco para <em class="font-serif text-blue">sentirte bien.</em></h1>
+        </header>
+
+        <form id="reservaForm" action="detalle.html" method="get" class="booking-layout">
+          <div>
+            <section class="booking-step" aria-labelledby="paso1">
+              <div class="step-title"><span class="step-title__num">01</span><h2 id="paso1">Elige tu servicio</h2><span class="step-title__line"></span></div>
+              <div id="listaServicios" role="radiogroup" aria-labelledby="paso1"></div>
+            </section>
+
+            <section class="booking-step" aria-labelledby="paso2">
+              <div class="step-title"><span class="step-title__num">02</span><h2 id="paso2">Elige barbero</h2><span class="step-title__line"></span></div>
+              <div class="barber-grid" id="listaBarberos" role="radiogroup" aria-labelledby="paso2"></div>
+            </section>
+
+            <section class="booking-step" aria-labelledby="paso3">
+              <div class="step-title"><span class="step-title__num">03</span><h2 id="paso3">Elige un día</h2><span class="step-title__line"></span></div>
+              <div class="date-grid" id="listaFechas" role="radiogroup" aria-labelledby="paso3"></div>
+              <div class="form-field otra-fecha">
+                <label class="form-label" for="otraFecha">¿Prefieres otro día?</label>
+                <span class="field-wrap">
+                  <span aria-hidden="true">📅</span>
+                  <input type="date" id="otraFecha" name="otraFecha">
+                </span>
+                <p class="field-hint">De lunes a sábado, hasta 60 días vista.</p>
+              </div>
+            </section>
+
+            <section class="booking-step" aria-labelledby="paso4">
+              <div class="step-title"><span class="step-title__num">04</span><h2 id="paso4">Elige una hora</h2><span class="step-title__line"></span></div>
+              <div class="form-field" id="campoHora">
+                <div class="time-grid" id="listaHoras" role="radiogroup" aria-labelledby="paso4"></div>
+                <p class="field-hint">Las horas tachadas ya están ocupadas con ese barbero.</p>
+              </div>
+            </section>
+          </div>
+
+          <aside class="summary" aria-labelledby="resumenTitulo">
+            <p class="summary__eyebrow" id="resumenTitulo">Resumen</p>
+            <div>
+              <p class="summary__title" id="summaryTitle">—</p>
+              <p class="summary__subtitle" id="summarySubtitle">—</p>
+            </div>
+            <div class="summary__rows">
+              <div class="summary__row"><span>Fecha</span><span id="summaryFecha">—</span></div>
+              <div class="summary__row"><span>Hora</span><span id="summaryHora">—</span></div>
+              <div class="summary__row"><span>Total</span><span class="gold" id="summaryPrecio">—</span></div>
+            </div>
+            <button type="submit" class="summary__cta">Confirmar reserva <span aria-hidden="true">›</span></button>
+          </aside>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

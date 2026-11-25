@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio · BarberFlow</title>
+  <meta name="description" content="Tu panel de BarberFlow: próxima cita, accesos rápidos y buscador de todas tus citas.">
+  <meta name="theme-color" content="#090807">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Slab:wght@500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/mockData.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/pages/index.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a href="index.html" class="brand">
+        <span class="brand__icon" aria-hidden="true">✂</span>
+        <span><span>BarberFlow</span><span class="brand__tag">Tu estilo, a tu ritmo</span></span>
+      </a>
+      <nav class="sidebar__nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html" aria-current="page">🏠 Inicio</a>
+        <a class="nav-link" href="crear.html">📅 Reservar cita</a>
+        <a class="nav-link" href="mis-citas.html">🕐 Mis citas</a>
+        <a class="nav-link" href="perfil.html">👤 Mi perfil</a>
+        <a class="nav-link" href="planes.html">✦ Planes</a>
+      </nav>
+      <button type="button" class="sidebar__logout" data-action="logout">↩ Cerrar sesión</button>
+    </aside>
+
+    <header class="mobile-header">
+      <a href="index.html" class="brand"><span class="brand__icon" aria-hidden="true">✂</span><span>BarberFlow</span></a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+        <span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span>
+      </button>
+    </header>
+
+    <main class="app-main">
+      <div class="page-container">
+        <header>
+          <p class="eyebrow" id="fechaHoy">Hoy</p>
+          <h1 class="page-title"><span id="saludo">Hola</span>, <em class="font-serif text-blue" id="userNameDisplay">Alejandro.</em></h1>
+        </header>
+
+        <section class="hero-card" aria-labelledby="heroTitle">
+          <div class="hero-card__inner">
+            <p class="hero-card__eyebrow">Tu próxima cita</p>
+            <h2 class="hero-card__title" id="heroTitle">Sin citas próximas</h2>
+            <div class="hero-card__meta">
+              <span>📅 <span id="heroFecha">-</span></span>
+              <span>🕐 <span id="heroHora">-</span></span>
+            </div>
+            <div class="hero-card__actions">
+              <a href="detalle.html" class="btn btn--gold" id="heroDetalle">Ver detalles</a>
+              <a href="crear.html" class="btn btn--ghost">Reservar</a>
+            </div>
+          </div>
+          <span class="hero-monogram" id="heroMonogram" aria-hidden="true">✦</span>
+        </section>
+
+        <section class="section" aria-labelledby="tituloEspacio">
+          <div class="section__header">
+            <div>
+              <p class="eyebrow">Todo bajo control</p>
+              <h2 class="section__title" id="tituloEspacio">Tu espacio</h2>
+            </div>
+          </div>
+          <div class="action-grid">
+            <a class="action-card" href="crear.html">
+              <span class="icon-bubble" aria-hidden="true">＋</span>
+              <span class="action-card__body"><strong>Nueva reserva</strong><small>Elige servicio, día y hora</small></span>
+              <span aria-hidden="true">›</span>
+            </a>
+            <a class="action-card" href="mis-citas.html">
+              <span class="icon-bubble" aria-hidden="true">🕐</span>
+              <span class="action-card__body"><strong>Mis citas</strong><small>Ver historial completo</small></span>
+              <span aria-hidden="true">›</span>
+            </a>
+            <a class="action-card action-card--wide" href="planes.html">
+              <span class="icon-bubble" aria-hidden="true">✦</span>
+              <span class="action-card__body"><strong>Suscripción</strong><small id="planActual">Gestionar plan</small></span>
+              <span aria-hidden="true">›</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- DASHBOARD: tarjetas generadas desde js/mockData.js -->
+        <section class="section" aria-labelledby="tituloCitas">
+          <div class="section__header">
+            <div>
+              <p class="eyebrow">Dashboard</p>
+              <h2 class="section__title" id="tituloCitas">Tus citas</h2>
+            </div>
+            <a href="mis-citas.html" class="section__link">Ver todo</a>
+          </div>
+
+          <div class="toolbar">
+            <div class="search">
+              <label for="buscarCitas" class="sr-only">Buscar citas</label>
+              <span aria-hidden="true">⌕</span>
+              <input type="search" id="buscarCitas" placeholder="Busca por servicio, barbero, día o código…" autocomplete="off">
+            </div>
+            <div class="chips" role="group" aria-label="Filtrar por estado">
+              <button type="button" class="chip" data-filtro="todas" aria-pressed="true">Todas <span class="chip__count"></span></button>
+              <button type="button" class="chip" data-filtro="confirmada" aria-pressed="false">Próximas <span class="chip__count"></span></button>
+              <button type="button" class="chip" data-filtro="completada" aria-pressed="false">Completadas <span class="chip__count"></span></button>
+              <button type="button" class="chip" data-filtro="cancelada" aria-pressed="false">Canceladas <span class="chip__count"></span></button>
+            </div>
+          </div>
+
+          <p class="results-count" id="contadorCitas" aria-live="polite"></p>
+          <div class="cita-grid" id="dashboardCitas"></div>
+
+          <div class="empty-state" id="citasVacias" hidden>
+            <strong>No hay citas que coincidan</strong>
+            <p>Prueba con otra búsqueda o cambia el filtro.</p>
+            <button type="button" class="btn btn--outline" id="limpiarFiltros">Limpiar filtros</button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegación inferior">
+      <a class="bottom-nav__link" href="index.html" aria-current="page"><span aria-hidden="true">🏠</span> Inicio</a>
+      <a class="bottom-nav__link" href="crear.html"><span aria-hidden="true">📅</span> Reservar</a>
+      <a class="bottom-nav__link" href="mis-citas.html"><span aria-hidden="true">🕐</span> Citas</a>
+      <a class="bottom-nav__link" href="perfil.html"><span aria-hidden="true">👤</span> Perfil</a>
+    </nav>
+  </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis citas · BarberFlow</title>
+  <meta name="description" content="Consulta tus próximas citas y el historial de visitas en BarberFlow.">
+  <meta name="theme-color" content="#090807">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Slab:wght@500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/mockData.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/pages/mis-citas.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a href="index.html" class="brand">
+        <span class="brand__icon" aria-hidden="true">✂</span>
+        <span><span>BarberFlow</span><span class="brand__tag">Tu estilo, a tu ritmo</span></span>
+      </a>
+      <nav class="sidebar__nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html">🏠 Inicio</a>
+        <a class="nav-link" href="crear.html">📅 Reservar cita</a>
+        <a class="nav-link" href="mis-citas.html" aria-current="page">🕐 Mis citas</a>
+        <a class="nav-link" href="perfil.html">👤 Mi perfil</a>
+        <a class="nav-link" href="planes.html">✦ Planes</a>
+      </nav>
+      <button type="button" class="sidebar__logout" data-action="logout">↩ Cerrar sesión</button>
+    </aside>
+
+    <header class="mobile-header">
+      <a href="index.html" class="brand"><span class="brand__icon" aria-hidden="true">✂</span><span>BarberFlow</span></a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+        <span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span>
+      </button>
+    </header>
+
+    <main class="app-main">
+      <div class="page-container">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Historial</p>
+            <h1 class="page-title">Tus <em class="font-serif text-gold">citas.</em></h1>
+          </div>
+          <a href="crear.html" class="btn btn--primary">+ Nueva cita</a>
+        </header>
+
+        <section class="section" aria-labelledby="tituloProximas">
+          <h2 class="list-title" id="tituloProximas">Próximas <span class="list-title__count" id="numProximas"></span></h2>
+          <div class="cita-grid" id="listaProximas"></div>
+          <div class="empty-state" id="vacioProximas" hidden>
+            <strong>No tienes citas pendientes</strong>
+            <p>Reserva tu próximo corte en menos de un minuto.</p>
+            <a href="crear.html" class="btn btn--primary">Reservar ahora</a>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="tituloHistorial">
+          <h2 class="list-title" id="tituloHistorial">Historial <span class="list-title__count" id="numHistorial"></span></h2>
+          <div class="cita-grid" id="listaHistorial"></div>
+          <div class="empty-state" id="vacioHistorial" hidden>
+            <strong>Todavía no hay historial</strong>
+            <p>Aquí aparecerán tus citas pasadas y canceladas.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegación inferior">
+      <a class="bottom-nav__link" href="index.html"><span aria-hidden="true">🏠</span> Inicio</a>
+      <a class="bottom-nav__link" href="crear.html"><span aria-hidden="true">📅</span> Reservar</a>
+      <a class="bottom-nav__link" href="mis-citas.html" aria-current="page"><span aria-hidden="true">🕐</span> Citas</a>
+      <a class="bottom-nav__link" href="perfil.html"><span aria-hidden="true">👤</span> Perfil</a>
+    </nav>
+  </div>
+</body>
+</html>

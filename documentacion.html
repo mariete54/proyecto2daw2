@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentación del Proyecto · BarberFlow</title>
+  <meta name="description" content="Documentación técnica del frontend de BarberFlow.">
+  <meta name="theme-color" content="#090807">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Slab:wght@500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/mockData.js" defer></script>
+  <script src="js/app.js" defer></script>
+  
+  <style>
+    /* =========================================
+       ESTILOS PARA LA PÁGINA WEB (PANTALLA)
+       ========================================= */
+    .doc-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--sp-5);
+      margin-bottom: var(--sp-5);
+    }
+    .doc-section h2 {
+      font-family: var(--font-display);
+      font-size: var(--fs-xl);
+      color: var(--gold);
+      margin-bottom: var(--sp-3);
+    }
+    .doc-section h3 {
+      font-family: var(--font-display);
+      font-size: var(--fs-lg);
+      margin-top: var(--sp-4);
+      margin-bottom: var(--sp-2);
+      color: var(--ink);
+      border-bottom: 1px solid var(--white-10);
+      padding-bottom: 0.25rem;
+    }
+    .doc-section p, .doc-section li {
+      font-size: var(--fs-base);
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+    .doc-section strong { color: var(--ink); }
+    .doc-tag {
+      display: inline-block;
+      background: rgba(194, 141, 112, 0.15);
+      color: var(--gold);
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      font-family: monospace;
+      font-size: 0.8rem;
+    }
+    .file-list { display: flex; flex-direction: column; gap: var(--sp-3); }
+    .file-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--surface-2);
+      border-radius: var(--r-sm);
+      border-left: 3px solid var(--blue);
+    }
+    .file-icon { font-size: 1.5rem; line-height: 1; }
+    .file-info h4 { color: var(--ink); font-family: monospace; font-size: var(--fs-md); margin-bottom: 0.25rem; }
+    .file-info p { margin-bottom: 0; }
+    .code-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--cream);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* =========================================
+       ESTILOS EXCLUSIVOS PARA IMPRIMIR EN PDF
+       (Aquí está la magia para que no salga mal)
+       ========================================= */
+    @media print {
+      /* 1. Ocultar menús, botones y adornos de la web */
+      .sidebar, .mobile-header, .bottom-nav, .back-link, .btn-print, body::after { 
+        display: none !important; 
+      }
+      
+      /* 2. Resetear márgenes y fondos para que parezca un documento */
+      body, .app, .app-main, .page-container { 
+        background: #ffffff !important; 
+        color: #000000 !important; 
+        margin: 0 !important; 
+        padding: 0 !important; 
+        box-shadow: none !important;
+        border: none !important;
+      }
+
+      /* 3. Estilo de las secciones en papel */
+      .doc-section { 
+        border: 1px solid #ddd !important; 
+        background: #ffffff !important; 
+        page-break-inside: avoid; /* Evita que una sección se parta entre dos páginas */
+        margin-bottom: 20px !important;
+        box-shadow: none !important;
+      }
+      
+      .file-item { 
+        background: #f8f8f8 !important; 
+        border-left: 3px solid #333 !important; 
+        page-break-inside: avoid;
+      }
+
+      /* 4. Colores del texto para papel */
+      h1, h2, h3, h4, strong { color: #000000 !important; text-shadow: none !important; }
+      p, li, span, em { color: #333333 !important; }
+      
+      /* 5. Etiquetas de código en papel */
+      .doc-tag { background: #eeeeee !important; color: #000000 !important; border: 1px solid #cccccc; }
+      .code-badge { background: #000000 !important; color: #ffffff !important; }
+      
+      /* 6. Ajuste del título principal */
+      .page-title { font-size: 28pt !important; margin-bottom: 10px !important; }
+      .eyebrow { color: #555 !important; font-size: 10pt !important; margin-bottom: 5px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a href="index.html" class="brand">
+        <span class="brand__icon">✂</span>
+        <span><span>BarberFlow</span><span class="brand__tag">Tu estilo, a tu ritmo</span></span>
+      </a>
+      <nav class="sidebar__nav">
+        <a class="nav-link" href="index.html">🏠 Inicio</a>
+        <a class="nav-link" href="crear.html">📅 Reservar cita</a>
+        <a class="nav-link" href="mis-citas.html">🕐 Mis citas</a>
+        <a class="nav-link" href="perfil.html">👤 Mi perfil</a>
+        <a class="nav-link" href="planes.html">✦ Planes</a>
+        <a class="nav-link" href="documentacion.html" aria-current="page">📄 Documentación</a>
+      </nav>
+    </aside>
+
+    <header class="mobile-header">
+      <a href="index.html" class="brand"><span class="brand__icon" aria-hidden="true">✂</span><span>BarberFlow</span></a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+        <span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span>
+      </button>
+    </header>
+
+    <main class="app-main">
+      <div class="page-container">
+        <a class="back-link" href="index.html">‹ Volver al inicio</a>
+
+        <header style="margin-top:1.75rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <p class="eyebrow">Documentación del frontend</p>
+            <h1 class="page-title">Estructura del <em class="font-serif text-gold">proyecto.</em></h1>
+          </div>
+          <button type="button" class="btn btn--primary btn-print" id="imprimirBtn" style="gap: 0.5rem;">
+            🖨️ Guardar como PDF
+          </button>
+        </header>
+
+        <p style="color: var(--muted); margin-bottom: 2rem; max-width: 800px;">
+          Esta página documenta la arquitectura del proyecto BarberFlow. Explica qué hace cada archivo, las etiquetas HTML5 utilizadas, la estructuración del CSS Mobile-First y la lógica de JavaScript implementada.
+        </p>
+
+        <section class="doc-section">
+          <h2>📄 Archivos HTML</h2>
+          <div class="file-list">
+            
+            <div class="file-item">
+              <div class="file-icon">🏠</div>
+              <div class="file-info">
+                <h4>index.html <span class="code-badge">Dashboard</span></h4>
+                <p>Página principal. Muestra el saludo personalizado (leyendo el nombre de `localStorage`), la tarjeta de la próxima cita y los accesos rápidos. Usa <span class="doc-tag">&lt;main&gt;</span>, <span class="doc-tag">&lt;section&gt;</span> y <span class="doc-tag">&lt;nav&gt;</span>.</p>
+              </div>
+            </div>
+
+            <div class="file-item">
+              <div class="file-icon">🔐</div>
+              <div class="file-info">
+                <h4>login.html / registro.html <span class="code-badge">Acceso</span></h4>
+                <p>Páginas de autenticación. Tienen un diseño dividido con una sección hero y un formulario. Al enviar el formulario de registro, se guarda el nombre en el navegador para personalizar el resto de la app.</p>
+              </div>
+            </div>
+
+            <div class="file-item">
+              <div class="file-icon">📅</div>
+              <div class="file-info">
+                <h4>crear.html <span class="code-badge">Inserción</span></h4>
+                <p>Formulario para crear una nueva reserva. Usa inputs tipo `radio` para seleccionar servicio, día y hora. Un <span class="doc-tag">&lt;aside&gt;</span> muestra el resumen que se actualiza dinámicamente con JS.</p>
+              </div>
+            </div>
+
+            <div class="file-item">
+              <div class="file-icon">🕐</div>
+              <div class="file-info">
+                <h4>mis-citas.html <span class="code-badge">Listado</span></h4>
+                <p>Listado completo de todas las citas reservadas. Lee el array de `localStorage` y genera una tarjeta por cada una. Incluye un botón de papelera para eliminar citas erróneas.</p>
+              </div>
+            </div>
+
+            <div class="file-item">
+              <div class="file-icon">✅</div>
+              <div class="file-info">
+                <h4>detalle.html <span class="code-badge">Ficha</span></h4>
+                <p>Ficha detallada de la última cita creada. Muestra el código de reserva, la fecha, hora y servicio. Permite cancelar la cita o crear una nueva.</p>
+              </div>
+            </div>
+
+            <div class="file-item">
+              <div class="file-icon">👤</div>
+              <div class="file-info">
+                <h4>perfil.html <span class="code-badge">Usuario</span></h4>
+                <p>Muestra los datos del cliente. El botón "Editar datos" desbloquea los campos para cambiar el nombre. Al guardar, el nuevo nombre se actualiza en toda la aplicación.</p>
+              </div>
+            </div>
+
+            <div class="file-item">
+              <div class="file-icon">✦</div>
+              <div class="file-info">
+                <h4>planes.html <span class="code-badge">Suscripción</span></h4>
+                <p>Muestra los planes Esencial, Flow y Signature. El plan activo se marca con un borde dorado. Al hacer clic en otro plan, se guarda la elección y se actualiza la interfaz.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <h2>🏗️ Estructura HTML5 Semántica</h2>
+          <p>El proyecto hace un uso estricto de las etiquetas semánticas de HTML5, evitando el uso excesivo de <span class="doc-tag">&lt;div&gt;</span>:</p>
+          <ul style="padding-left: 1.5rem; margin-top: 1rem; list-style-type: disc;">
+            <li><strong><span class="doc-tag">&lt;header&gt;</span>:</strong> Para la cabecera superior (en móvil y login).</li>
+            <li><strong><span class="doc-tag">&lt;nav&gt;</span>:</strong> Para agrupar los menús de navegación (sidebar, bottom-nav, pestañas).</li>
+            <li><strong><span class="doc-tag">&lt;main&gt;</span>:</strong> Envuelve el contenido principal de cada página (solo uno por documento).</li>
+            <li><strong><span class="doc-tag">&lt;section&gt;</span>:</strong> Para agrupar bloques temáticos (panel hero, pasos de reserva).</li>
+            <li><strong><span class="doc-tag">&lt;article&gt;</span>:</strong> Para contenido independiente (ficha de detalle, tarjetas de planes).</li>
+            <li><strong><span class="doc-tag">&lt;aside&gt;</span>:</strong> Para barras laterales y el panel de resumen de la reserva.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2>🎨 CSS3 Mobile First</h2>
+          <p>El archivo <strong>css/styles.css</strong> sigue la filosofía Mobile First:</p>
+          <ul style="padding-left: 1.5rem; margin-top: 1rem; list-style-type: disc;">
+            <li><strong>Variables CSS (<span class="doc-tag">:root</span>):</strong> Colores, tipografías, espaciados, radios y sombras centralizados.</li>
+            <li><strong>Flexbox:</strong> Para alinear elementos en una dimensión (menús, botones, tarjetas).</li>
+            <li><strong>CSS Grid:</strong> Para crear cuadrículas bidimensionales (planes, citas, reservas).</li>
+            <li><strong>Media Queries:</strong>
+              <ul style="padding-left: 1.5rem; margin-top: 0.5rem; list-style-type: circle;">
+                <li><strong>≥ 640px:</strong> 2 columnas en tarjetas.</li>
+                <li><strong>≥ 768px:</strong> Login horizontal. 3 columnas.</li>
+                <li><strong>≥ 1024px:</strong> Aparece la barra lateral (sidebar) y desaparece el menú inferior móvil.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2>⚙️ Lógica JavaScript y Persistencia</h2>
+          <p>JavaScript Vanilla organizado en la carpeta <span class="doc-tag">js/</span> (scripts clásicos con <span class="doc-tag">defer</span>):</p>
+          <ul style="padding-left: 1.5rem; margin-top: 1rem; list-style-type: disc;">
+            <li><strong>mockData.js:</strong> base de datos simulada (usuario, servicios, barberos, horarios, citas y planes).</li>
+            <li><strong>app.js:</strong> núcleo compartido: capa de datos sobre <span class="doc-tag">localStorage</span>, fechas, modal, toast, menú hamburguesa y tarjeta de cita.</li>
+            <li><strong>validation.js:</strong> validador reutilizable con mensajes en el DOM y validación en tiempo real.</li>
+            <li><strong>pages/*.js:</strong> un script por página (dashboard con buscador y filtros, reserva, perfil, planes…).</li>
+            <li><strong>Claves guardadas:</strong> <span class="doc-tag">bf_usuario</span>, <span class="doc-tag">bf_citas</span>, <span class="doc-tag">bf_plan</span>, <span class="doc-tag">bf_ultimaCita</span>.</li>
+          </ul>
+          <p style="margin-top: 1rem;">La memoria técnica completa está en el archivo <strong>MEMORIA.md</strong> del repositorio.</p>
+        </section>
+
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <a class="bottom-nav__link" href="index.html"><span>🏠</span> Inicio</a>
+      <a class="bottom-nav__link" href="crear.html"><span>📅</span> Reservar</a>
+      <a class="bottom-nav__link" href="mis-citas.html"><span>🕐</span> Citas</a>
+      <a class="bottom-nav__link" href="documentacion.html" aria-current="page"><span>📄</span> Info</a>
+    </nav>
+  </div>
+
+  <script>document.getElementById("imprimirBtn").addEventListener("click", () => window.print());</script>
+</body>
+</html>
